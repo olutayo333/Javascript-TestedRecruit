@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="jsone.js"></script>
+</head>
+<body onload="loadData()">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div class="container" style="background-color: #FAFAFA; outline: 1px solid rgb(224, 220, 220)">
+        <div class="row mt-3">
+            <div class="col-lg-12 my-3" style="background-color: #FAFAFA; ;">
+                <div class="row bg-white shadow my-3 mx-2" style="border-radius: 20px;">
+                    <div class="col-3 my-auto">
+                        <img src="./images/TestLogo.svg" alt="" width="100" class="img-fluid">
+                    </div>
+                    <div class="col-6 my-auto py-2 ">
+                        <button class="btn btn-sm  mx-1"><img src="./images/home_.svg" class="img-fluid me-1" width="10">Overview</button>
+                        <button class="btn btn-sm mx-1 px-2 py-1" style="background-color:aquamarine; border-radius: 25px;">
+                            <img src="./images/group_FILL0.svg" width="15" class="img-fluid mx-1" alt="">Patients
+                        </button>
+                        <button class="btn btn-sm btn-white"><img src="./images/calendar_.svg" class="img-fluid me-1" width="15" >Schedule</button>
+                        <button class="btn btn-sm btn-white"> <img src="./images/chat_bubble.svg" class="img-fluid me-1" width="15">  Message</button>
+                        <button class="btn btn-sm btn-white"><img src="./images/credit_card.svg" class="img-fluid me-1" width="15">Transactions</button>
+                    </div>
+                    <div class="col-2 ">
+                        <button class="btn " >
+                            <img src="./images/woman.png" width="30">
+                               Dr Jose Simmons  
+                               <!-- <p style="float: inline-end;">Medical Director</p> -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ROW 2 -->
+         <div class="row my-2" >
+            <div class="col-2 bg-white mx-3" style="border-radius: 25px; height: 100vh; overflow:auto;">  
+                <p class="fs-5 px-2 py-2"> <b>Patients</b> <span style="float: inline-end"><button class="btn btn-sm"><img src="./images/search.svg" width="20"></button></span></p>
+                <div id="displayPatients" style="font-size: 13px;"> </div>        
+            </div>
+            <div class="col-6 mx-2 bg-white" style="border-radius: 25px;">
+                <p class="pt-3 px-2"><b>Diagnosis History</b></p>
+                <div style="background-color: #F4F0FE;">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="row d-flex my-4 mx-auto ms-5 ">
+                  <div class="col-lg-3 shadow rounded mx-2 py-2 px-2" style="background-color:#E0F3FA ;">
+                    <img src="./images/respiratory rate.svg" width="70">
+                    <p>Respiratory Rate</p>
+                    <p class="fs-5"> <b>20 bpm</b></p>
+                    <small>Normal</small>
+                  </div>
+                  <div class="col-lg-3 shadow rounded mx-2 py-2 px-2" style="background-color: #FFE6E9;">
+                    <img src="./images/temperature.svg" width="70">
+                    <p>Temperature</p>
+                    <p class="fs-5"> <b>98.6 <sup>o</sup> F</b></p>
+                    <small>Normal</small>
+                  </div>
+                  <div class="col-lg-3 shadow rounded mx-2 py-2 px-2" style="background-color: #FFE6F1;">
+                   <img src="./images/HeartBPM.svg" width="70">
+                   <p>Heart Rate</p>
+                   <p class="fs-5"> <b>78 bpm <sup>o</sup> F</b></p>
+                    <small>Lower than Average</small>
+                  </div>
+                </div>
+            </div>
+            <div class="col-3 mx-2 bg-white" style="border-radius: 25px;">
+                <div id="jessica_details"> </div>
+            </div>
+         </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script >
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023', 'Jan 2024', 'Feb 2024', 'Mar 2024'],
+            datasets: [{
+              label: 'Diastolic',
+              data: [77, 120, 95, 92, 95, 80, 68, 70, 95],
+              borderWidth: 1
+            },
+            {
+              label: 'Systolic',
+              data: [168, 151, 163, 158, 117, 115, 133, 149, 165],
+              borderWidth: 1
+            }    
+        ]
+          },
+          options: {
+          animations: {
+      radius: {
+        duration: 400,
+        easing: 'linear',
+        loop: (context) => context.active
+      }
+    },
+    hoverRadius: 12,
+    hoverBackgroundColor: 'yellow',
+    interaction: {
+      mode: 'nearest',
+      intersect: false,
+      axis: 'x'
+    },
+    plugins: {
+      tooltip: {
+        enabled: false
+      }
+    }
+  }
+        });
+      </script>
+</body>
+</html>
